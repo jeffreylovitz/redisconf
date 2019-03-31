@@ -1,0 +1,2 @@
+redis
+click>=6.7
