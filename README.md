@@ -1,21 +1,20 @@
-[Cypher Language cheatsheet](http://www.jeffreylovitz.com)
+# RedisGraph workshop at RedisConf 2019
+
+## References and links
+[Presentation Slides](https://docs.google.com/presentation/d/1Yx-qHhnASeDgHd7_Po9sZ0iOAIYOIK1CC8OUXmVB_zU/edit?usp=sharing)
+
+[The RedisGraph sizing calculator](https://redislabs.com/redis-enterprise/redis-modules/redis-enterprise-modules/redisgraph/redisgraph-calculator/)
+
+[RedisGraph documentation](https://redisgraph.io)
 
 Graph is constructed from the data at the [Worldbuilding Stack Exchange](https://worldbuilding.stackexchange.com/tour)
 
-### Labels and relationship types (1)
-`GRAPH.QUERY worldbuilding "MATCH (a)-[e]->(b) RETURN DISTINCT LABELS(a), TYPE(e), LABELS(b)"`
+Language cheatsheet is adapted from the [Neo4j Cypher Reference card 3.5](https://neo4j.com/docs/cypher-refcard/current/)
 
-### Label properties (2)
-`GRAPH.QUERY worldbuilding "MATCH (q:Question) RETURN q LIMIT 1"`
+## In this repository
+Build tools and instructions to replicate the conference demo (or any other Stack Exchange data set) are located in [generate_graph](generate_graph/README.md).
 
-### Filtering results with the WHERE clause (3)
-`GRAPH.QUERY worldbuilding "MATCH (a:Answer) WHERE a.score > 500 RETURN a"`
+The language cheatsheet materials are located in `cypher_cheatsheet`.
 
-### Variable-length paths (4)
-`GRAPH.QUERY worldbuilding "MATCH (u:User)-[*]->(t:Tag) RETURN u.name, t LIMIT 20"`
 
-### Using functions in queries (5)
-`GRAPH.QUERY worldbuilding "MATCH (q:Question)-[e]->(t:Tag) RETURN t, SUM(q.score), COUNT(e)"`
-
-### Returning multiple entities (6)
-`GRAPH.QUERY worldbuilding "MATCH (a:Answer)-[]->(q:Question)-[:HAS_TAG]->(t:Tag) RETURN q, a, t LIMIT 1"`
+Feel free to contact me with questions about this content or RedisGraph more generally!
